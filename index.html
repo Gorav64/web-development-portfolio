@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Independent Web Developer — Modern Websites That Help Businesses Grow</title>
+  <meta name="description" content="Independent web developer building fast, responsive, conversion-focused websites for small businesses, startups and local brands worldwide. HTML, CSS, JavaScript and API integration." />
+  <meta name="theme-color" content="#06040c" />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Independent Web Developer — Modern Websites That Help Businesses Grow" />
+  <meta property="og:description" content="Fast, responsive, conversion-focused websites for small businesses, startups and local brands." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="bg-scene" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-bar"></span></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">V</span>
+        <span class="brand-text">
+          <strong data-brand-name>Vishal Kumar</strong>
+          <small data-brand-role>Independent Web Developer</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <nav aria-label="Mobile">
+        <a href="#work"><span>01</span>Work</a>
+        <a href="#services"><span>02</span>Services</a>
+        <a href="#about"><span>03</span>About</a>
+        <a href="#process"><span>04</span>Process</a>
+        <a href="#contact"><span>05</span>Contact</a>
+      </nav>
+      <div class="mobile-menu-foot">
+        <a class="btn btn-primary" href="#contact">Hire Me</a>
+        <a class="mobile-email" data-email-link href="mailto:firwall63@gmail.com">firwall63@gmail.com</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="status-pill reveal">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Available for freelance projects
+          </p>
+
+          <h1 class="reveal" data-delay="1">
+            I Build Modern Websites That
+            <span class="gradient-text">Help Businesses Grow.</span>
+          </h1>
+
+          <p class="hero-lead reveal" data-delay="2">
+            I'm an independent web developer creating fast, responsive and
+            conversion-focused websites for small businesses, startups and local
+            brands. Clean code, thoughtful design, and a site your customers
+            actually enjoy using.
+          </p>
+
+          <div class="hero-actions reveal" data-delay="3">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              Hire Me
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#work" class="btn btn-ghost btn-lg">
+              View My Work
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M5 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <dl class="hero-facts reveal" data-delay="4">
+            <div>
+              <dt>Services</dt>
+              <dd>06</dd>
+            </div>
+            <div>
+              <dt>Featured builds</dt>
+              <dd>03</dd>
+            </div>
+            <div>
+              <dt>Hand-coded</dt>
+              <dd>100%</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual reveal" data-delay="2" data-tilt>
+          <div class="visual-glow" aria-hidden="true"></div>
+
+          <div class="browser-window">
+            <div class="browser-bar" aria-hidden="true">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="url-pill">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5 9.5 6.5M7 4.5l1-1a2.5 2.5 0 0 1 3.5 3.5l-1 1M9 11.5l-1 1a2.5 2.5 0 0 1-3.5-3.5l1-1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                yourbusiness.com
+              </span>
+              <span class="bar-actions" aria-hidden="true"><i></i><i></i></span>
+            </div>
+
+            <div class="browser-body" aria-hidden="true">
+              <div class="mock-nav">
+                <span class="mock-logo"><i></i>Nexora</span>
+                <span class="mock-links"><i></i><i></i><i></i></span>
+                <span class="mock-pill">Get started</span>
+              </div>
+              <div class="mock-hero">
+                <span class="mock-tag">Product analytics</span>
+                <h3>Your metrics,<br />finally in one place.</h3>
+                <p class="mock-sub"></p>
+                <p class="mock-sub short"></p>
+                <div class="mock-actions">
+                  <span class="mock-btn">Start free</span>
+                  <span class="mock-btn ghost">Book a demo</span>
+                </div>
+              </div>
+              <div class="mock-panel">
+                <div class="mock-chart">
+                  <span style="--h: 34%"></span><span style="--h: 52%"></span>
+                  <span style="--h: 44%"></span><span style="--h: 68%"></span>
+                  <span style="--h: 58%"></span><span style="--h: 86%"></span>
+                  <span style="--h: 74%"></span><span style="--h: 96%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card float-code" aria-hidden="true">
+            <div class="code-head"><i class="dot-red"></i><i class="dot-amber"></i><i class="dot-green"></i><span>build.js</span></div>
+            <pre><code><span class="tok-kw">const</span> site = {
+  fast: <span class="tok-num">true</span>,
+  responsive: <span class="tok-num">true</span>,
+  builtFor: <span class="tok-str">"growth"</span>
+};</code></pre>
+          </div>
+
+          <div class="float-card float-badge" aria-hidden="true">
+            <span class="badge-icon">
+              <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 5.2h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span>
+              <strong>Responsive first</strong>
+              <small>Every breakpoint covered</small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="tech-marquee reveal" data-delay="5" aria-label="Technologies used">
+          <div class="marquee-track">
+            <span>HTML5</span><i></i>
+            <span>CSS3</span><i></i>
+            <span>JavaScript</span><i></i>
+            <span>API Integration</span><i></i>
+            <span>Responsive Design</span><i></i>
+            <span>Git &amp; GitHub</span><i></i>
+            <span>Figma to Code</span><i></i>
+            <span>SEO Basics</span><i></i>
+            <span>HTML5</span><i></i>
+            <span>CSS3</span><i></i>
+            <span>JavaScript</span><i></i>
+            <span>API Integration</span><i></i>
+            <span>Responsive Design</span><i></i>
+            <span>Git &amp; GitHub</span><i></i>
+            <span>Figma to Code</span><i></i>
+            <span>SEO Basics</span><i></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span>01</span> About me</p>
+          <h2 class="section-title">Independent developer, obsessed with the details that make a site feel premium.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="profile-card glass">
+              <div class="profile-top">
+                <span class="profile-mono" data-brand-initial aria-hidden="true">V</span>
+                <div>
+                  <strong data-brand-name>Vishal Kumar</strong>
+                  <small data-brand-role>Independent Web Developer</small>
+                </div>
+              </div>
+              <div class="profile-rule"></div>
+              <ul class="profile-list">
+                <li><span>Focus</span><strong>Frontend &amp; responsive design</strong></li>
+                <li><span>Stack</span><strong>HTML · CSS · JavaScript</strong></li>
+                <li><span>Working</span><strong>Remote, worldwide</strong></li>
+                <li><span>Timezone</span><strong id="about-timezone">IST (UTC+5:30)</strong></li>
+              </ul>
+              <div class="profile-chips">
+                <span class="chip">Detail-driven</span>
+                <span class="chip">Clear communication</span>
+                <span class="chip">Deadline-aware</span>
+              </div>
+            </div>
+            <div class="about-flare" aria-hidden="true"></div>
+          </div>
+
+          <div class="about-copy reveal" data-delay="1">
+            <p class="lead">
+              I'm an independent web developer who builds websites for small
+              businesses that need to look credible, load fast and turn visitors
+              into customers.
+            </p>
+            <p>
+              My work sits at the intersection of design and frontend engineering:
+              I care about how a page looks, but I care just as much about how it
+              behaves on a five-year-old phone with a slow connection. I work with
+              HTML, CSS and modern JavaScript, integrate real APIs, and translate
+              Figma designs into pixel-clean, responsive interfaces.
+            </p>
+            <p>
+              I work directly with clients — no account managers, no hand-offs.
+              That means you talk to the person writing the code, decisions happen
+              quickly, and nothing gets lost in translation.
+            </p>
+
+            <div class="honest-note">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 6.2v.2M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <p>
+                Straight answer: I'm an early-career developer building a
+                freelance practice. My portfolio below is made of personal and
+                practice projects, not paid client work. I'd rather show honest
+                work than invented case studies.
+              </p>
+            </div>
+
+            <div class="about-highlights">
+              <div class="highlight">
+                <span class="highlight-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
+                <div>
+                  <strong>Responsive by default</strong>
+                  <p>Layouts designed for mobile first, then scaled up with intention.</p>
+                </div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-9 12h6l-1 8 9-12h-6l1-8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                  <strong>Performance-minded</strong>
+                  <p>Lightweight assets, sensible CSS and no bloated page builders.</p>
+                </div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4 3 9l5 5M16 4l5 5-5 5M13.5 3 10.5 21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                  <strong>Readable code</strong>
+                  <p>You get source files you can maintain, not a locked black box.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <p class="eyebrow"><span>02</span> Services</p>
+            <h2 class="section-title">What I can build for your business.</h2>
+          </div>
+          <p class="section-sub">
+            Fixed-scope projects with clear deliverables. Every service is
+            delivered responsive, tested and documented.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 21h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="service-num">01</span>
+            </div>
+            <h3>Business Website Development</h3>
+            <p>Multi-page websites for local businesses that need a credible, modern presence — home, services, about and contact, built to convert.</p>
+            <ul class="service-list">
+              <li>Custom design, no templates</li>
+              <li>Mobile-first responsive build</li>
+              <li>Contact &amp; enquiry flow</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal" data-delay="1" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h8M8 12.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 20h6M12 16v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="service-num">02</span>
+            </div>
+            <h3>Landing Page Development</h3>
+            <p>A single, focused page built around one goal — bookings, calls, sign-ups or sales — with a structure that guides visitors to act.</p>
+            <ul class="service-list">
+              <li>Conversion-focused layout</li>
+              <li>Fast, single-page load</li>
+              <li>Clear calls to action</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal" data-delay="2" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.5A8 8 0 0 0 6.6 6.4L4 8.8M4 8.8V4m0 4.8h4.8M4 15.5a8 8 0 0 0 13.4 2.1l2.6-2.4M20 15.2v4.8m0-4.8h-4.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="service-num">03</span>
+            </div>
+            <h3>Website Redesign</h3>
+            <p>Keep what works, replace what doesn't. I rebuild outdated sites with modern layouts, better hierarchy and a mobile experience that holds up.</p>
+            <ul class="service-list">
+              <li>Structure &amp; content audit</li>
+              <li>Modern visual refresh</li>
+              <li>Same domain, better site</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7.5" y="2.5" width="9" height="19" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 9.5h2.5M18.5 9.5H21M3 14.5h2.5M18.5 14.5H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              <span class="service-num">04</span>
+            </div>
+            <h3>Responsive Web Design</h3>
+            <p>One codebase that looks deliberate on phones, tablets and desktops — not a squeezed desktop layout with broken menus.</p>
+            <ul class="service-list">
+              <li>Fluid grids &amp; typography</li>
+              <li>Touch-friendly navigation</li>
+              <li>Cross-browser checks</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal" data-delay="1" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 3 12l5 7M16 5l5 7-5 7M13.5 4l-3 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="service-num">05</span>
+            </div>
+            <h3>Frontend Development</h3>
+            <p>Turn a design into working HTML, CSS and JavaScript — animations, interactive components and clean, maintainable source files.</p>
+            <ul class="service-list">
+              <li>Semantic, accessible markup</li>
+              <li>Component-style CSS</li>
+              <li>Documented handoff</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal" data-delay="2" data-tilt>
+            <div class="service-top">
+              <span class="service-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+              <span class="service-num">06</span>
+            </div>
+            <h3>Figma to Website Conversion</h3>
+            <p>Already have a design? I'll convert it into a responsive, production-ready website that matches the file — spacing, type and interactions.</p>
+            <ul class="service-list">
+              <li>Pixel-aware build</li>
+              <li>Responsive interpretation</li>
+              <li>Hover &amp; scroll states</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <p class="eyebrow"><span>03</span> Selected work</p>
+            <h2 class="section-title">Personal and practice projects.</h2>
+          </div>
+          <p class="section-sub">
+            Honest labels: these are self-directed builds, not paid client
+            engagements. Each one is a real, working exercise in interface design
+            and frontend engineering.
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card reveal" data-case="nexora" data-tilt>
+            <div class="case-art art-nexora">
+              <span class="case-tag">Personal project</span>
+              <div class="mini-browser">
+                <div class="mini-bar"><i></i><i></i><i></i></div>
+                <div class="mini-body">
+                  <div class="mini-nav"><span class="mini-logo">Nexora</span><span class="mini-links"><i></i><i></i><i></i></span><span class="mini-btn"></span></div>
+                  <div class="mini-hero">
+                    <span class="mini-eyebrow"></span>
+                    <strong>Analytics that feel simple.</strong>
+                    <span class="mini-line"></span>
+                    <span class="mini-line short"></span>
+                    <div class="mini-ctas"><i></i><i class="ghost"></i></div>
+                  </div>
+                  <div class="mini-cards"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-head">
+                <h3>Nexora SaaS Landing Page</h3>
+                <span class="case-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M6 14 14 6M8 6h6v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <p>A complete SaaS marketing page built from scratch — hero, feature grid, pricing tiers and responsive navigation.</p>
+              <div class="case-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <button class="case-link" type="button" data-open-case="nexora">View case study</button>
+            </div>
+          </article>
+
+          <article class="case-card reveal" data-delay="1" data-case="country" data-tilt>
+            <div class="case-art art-country">
+              <span class="case-tag">Personal project</span>
+              <div class="mini-browser">
+                <div class="mini-bar"><i></i><i></i><i></i></div>
+                <div class="mini-body country-body">
+                  <div class="country-head">
+                    <span class="globe"></span>
+                    <div class="search-mock"><i></i></div>
+                  </div>
+                  <div class="country-grid">
+                    <span><i></i><b></b><em></em></span>
+                    <span><i></i><b></b><em></em></span>
+                    <span><i></i><b></b><em></em></span>
+                    <span><i></i><b></b><em></em></span>
+                    <span><i></i><b></b><em></em></span>
+                    <span><i></i><b></b><em></em></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-head">
+                <h3>Country Explorer API Application</h3>
+                <span class="case-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M6 14 14 6M8 6h6v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <p>A data-driven app consuming the REST Countries API — live search, region filters, and a detail view for every country.</p>
+              <div class="case-tech"><span>JavaScript</span><span>Fetch API</span><span>CSS Grid</span></div>
+              <button class="case-link" type="button" data-open-case="country">View case study</button>
+            </div>
+          </article>
+
+          <article class="case-card reveal" data-delay="2" data-case="zudoo" data-tilt>
+            <div class="case-art art-zudoo">
+              <span class="case-tag alt">Concept</span>
+              <div class="mini-browser">
+                <div class="mini-bar"><i></i><i></i><i></i></div>
+                <div class="mini-body zudoo-body">
+                  <div class="zudoo-orb"></div>
+                  <div class="chat-bubble left">How can I help you today?</div>
+                  <div class="chat-bubble right"></div>
+                  <div class="chat-bubble right short"></div>
+                  <div class="chat-input"><i></i><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-head">
+                <h3>Zudoo AI Assistant Concept</h3>
+                <span class="case-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M6 14 14 6M8 6h6v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <p>An interface concept for an AI assistant: conversation layout, streaming-style states and a calm, focused visual language.</p>
+              <div class="case-tech"><span>UI Concept</span><span>HTML</span><span>CSS</span></div>
+              <button class="case-link" type="button" data-open-case="zudoo">View case study</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span>04</span> Skills</p>
+          <h2 class="section-title">What I work with — labelled honestly.</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-col reveal">
+            <h3><span class="level-dot hi"></span> Comfortable</h3>
+            <p class="skill-desc">I can build production work with these today.</p>
+            <ul class="skill-tags">
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript (ES6+)</li>
+              <li>Responsive Web Design</li>
+              <li>Flexbox &amp; CSS Grid</li>
+              <li>CSS Animations</li>
+              <li>Git &amp; GitHub</li>
+            </ul>
+          </div>
+          <div class="skill-col reveal" data-delay="1">
+            <h3><span class="level-dot mid"></span> Working knowledge</h3>
+            <p class="skill-desc">Used in real projects; still deepening.</p>
+            <ul class="skill-tags">
+              <li>REST API Integration</li>
+              <li>Fetch API &amp; async/await</li>
+              <li>Figma to Code</li>
+              <li>Web Accessibility Basics</li>
+              <li>SEO Fundamentals</li>
+              <li>Netlify / Vercel</li>
+              <li>Performance Basics</li>
+            </ul>
+          </div>
+          <div class="skill-col reveal" data-delay="2">
+            <h3><span class="level-dot low"></span> Currently learning</h3>
+            <p class="skill-desc">In progress — not sold as expertise.</p>
+            <ul class="skill-tags learning">
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Component Architecture</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <p class="eyebrow"><span>05</span> Work process</p>
+            <h2 class="section-title">A clear path from first call to launch.</h2>
+          </div>
+          <p class="section-sub">
+            Six steps, no surprises. You always know what is happening, what is
+            next, and what I need from you.
+          </p>
+        </div>
+
+        <ol class="process-list">
+          <li class="process-step reveal">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h3>Discovery</h3>
+              <p>A short call or written brief to understand your business, audience and the one thing the website must achieve.</p>
+              <span class="step-out">Output: goals &amp; scope notes</span>
+            </div>
+          </li>
+          <li class="process-step reveal" data-delay="1">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h3>Planning</h3>
+              <p>Page list, content outline, sitemap and timeline. We agree on exactly what is being built before any design starts.</p>
+              <span class="step-out">Output: sitemap &amp; timeline</span>
+            </div>
+          </li>
+          <li class="process-step reveal" data-delay="2">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h3>Design</h3>
+              <p>Layout direction and visual style for the key pages. You review and approve the look before development begins.</p>
+              <span class="step-out">Output: design sign-off</span>
+            </div>
+          </li>
+          <li class="process-step reveal" data-delay="3">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h3>Development</h3>
+              <p>Responsive build with clean HTML, CSS and JavaScript. Progress previews shared at natural checkpoints.</p>
+              <span class="step-out">Output: preview build</span>
+            </div>
+          </li>
+          <li class="process-step reveal" data-delay="4">
+            <span class="step-num">05</span>
+            <div class="step-body">
+              <h3>Testing</h3>
+              <p>Checks across phone, tablet and desktop sizes, plus links, forms, loading behaviour and basic accessibility.</p>
+              <span class="step-out">Output: test report</span>
+            </div>
+          </li>
+          <li class="process-step reveal" data-delay="5">
+            <span class="step-num">06</span>
+            <div class="step-body">
+              <h3>Delivery</h3>
+              <p>Files, deployment, a short handover document and a walkthrough so you can make simple edits yourself.</p>
+              <span class="step-out">Output: live site &amp; handover</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-shell glass reveal">
+          <div class="contact-copy">
+            <p class="eyebrow"><span>06</span> Contact</p>
+            <h2>Have a project in mind?<br /><span class="gradient-text">Let's talk.</span></h2>
+            <p class="contact-lead">
+              Tell me about your business and what you need. I reply to every
+              serious enquiry, usually within one business day.
+            </p>
+
+            <div class="contact-links">
+              <a class="contact-item" data-email-link href="mailto:firwall63@gmail.com">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </span>
+                <span><small>Email</small><strong>firwall63@gmail.com</strong></span>
+              </a>
+              <a class="contact-item" id="github-link" href="#contact" aria-disabled="true">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.46.09.63-.2.63-.44v-1.7c-2.56.56-3.1-1.08-3.1-1.08-.42-1.06-1.02-1.35-1.02-1.35-.84-.57.06-.56.06-.56.92.07 1.4.95 1.4.95.82 1.4 2.16 1 2.68.77.08-.6.32-1 .58-1.24-2.04-.23-4.19-1.02-4.19-4.55 0-1 .36-1.83.95-2.47-.1-.23-.41-1.17.09-2.44 0 0 .77-.25 2.53.94a8.8 8.8 0 0 1 4.6 0c1.75-1.19 2.52-.94 2.52-.94.5 1.27.19 2.21.09 2.44.59.64.95 1.46.95 2.47 0 3.54-2.16 4.32-4.2 4.54.33.29.63.85.63 1.72v2.55c0 .25.16.54.63.45A9.2 9.2 0 0 0 12 2.8Z" fill="currentColor"/></svg>
+                </span>
+                <span><small>GitHub</small><strong id="github-handle">Profile coming soon</strong></span>
+              </a>
+              <a class="contact-item" id="linkedin-link" aria-disabled="true">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V17M8 7.4v.1M12 17v-3.6c0-1.2.8-2.1 2-2.1s2 .9 2 2.1V17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <span><small>LinkedIn</small><strong id="linkedin-label">Profile coming soon</strong></span>
+              </a>
+            </div>
+
+            <p class="contact-meta" id="contact-meta">India · Working with clients worldwide · IST (UTC+5:30)</p>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="cf-name">Your name</label>
+                  <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required />
+                  <span class="field-error" data-error-for="name"></span>
+                </div>
+                <div class="field">
+                  <label for="cf-email">Email</label>
+                  <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="jane@business.com" required />
+                  <span class="field-error" data-error-for="email"></span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="cf-type">Project type</label>
+                  <select id="cf-type" name="projectType">
+                    <option value="Business website">Business website</option>
+                    <option value="Landing page">Landing page</option>
+                    <option value="Website redesign">Website redesign</option>
+                    <option value="Figma to website">Figma to website</option>
+                    <option value="Frontend development">Frontend development</option>
+                    <option value="Something else">Something else</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="cf-budget">Budget range</label>
+                  <select id="cf-budget" name="budget">
+                    <option value="Not sure yet">Not sure yet</option>
+                    <option value="Under $300">Under $300</option>
+                    <option value="$300 – $700">$300 – $700</option>
+                    <option value="$700 – $1,500">$700 – $1,500</option>
+                    <option value="$1,500+">$1,500+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="cf-message">Project details</label>
+                <textarea id="cf-message" name="message" rows="5" placeholder="What does your business do, and what do you need the website to achieve?" required></textarea>
+                <span class="field-error" data-error-for="message"></span>
+              </div>
+
+              <div class="hp-field" aria-hidden="true">
+                <label for="cf-company">Company</label>
+                <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">
+                <span class="btn-label">Send enquiry</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11.5 5 17 10l-5.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <p class="form-note" id="form-note">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10 6.2v.2M10 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span>This form opens your email app with the message pre-filled. Nothing is sent until you press send there.</span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">V</span>
+          <span class="brand-text"><strong data-brand-name>Vishal Kumar</strong><small data-brand-role>Independent Web Developer</small></span>
+        </a>
+        <p>Modern websites for businesses that want to be taken seriously online.</p>
+      </div>
+      <div class="footer-nav">
+        <div>
+          <h4>Navigate</h4>
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a data-email-link href="mailto:firwall63@gmail.com">Email</a>
+          <a id="github-link-footer" href="#contact">GitHub</a>
+          <a href="#contact">Start a project</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year">2026</span> <span data-brand-name>Vishal Kumar</span>. All rights reserved.</p>
+      <p>Built from scratch with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <dialog class="case-modal" id="case-modal" aria-labelledby="case-modal-title">
+    <div class="modal-inner">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close case study">
+        <svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <a href="#top" class="back-top" id="back-top" aria-label="Back to top">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

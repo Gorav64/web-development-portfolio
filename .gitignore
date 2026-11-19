@@ -1,0 +1,31 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Dependencies (none required today, but keep the repo clean)
+node_modules/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Local build / debug output
+*.log
+npm-debug.log*
+tmp/
+dist/
+site/
+
+# Generated client deliverables are works in progress.
+# Keep briefs + generated sites out of the public portfolio repo.
+clients/*/site/
+clients/*/proposal.html
+
+# Personal lead data is private by default.
+# Export and backup from the Studio dashboard instead of committing it.
+leads/private-*.csv
+leads/private-*.json

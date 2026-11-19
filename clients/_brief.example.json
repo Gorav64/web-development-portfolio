@@ -1,0 +1,41 @@
+{
+  "_note": "Fictional example brief for the Studio site builder. All names, contacts and domains are reserved examples. Do not deliver this content to a real client.",
+  "_format": {
+    "presetId": "One of: restaurant, cafe, gym, fitness, real-estate, salon, consultant, local-service, small-business, startup, saas, portfolio, agency",
+    "items": "Array of { name, desc, price }; desc and price may be empty strings",
+    "hours": "One line per row, exactly as the client confirms them"
+  },
+  "presetId": "cafe",
+  "businessName": "Fern & Filter",
+  "tagline": "Slow coffee, warm rooms, good mornings.",
+  "description": "A neighbourhood cafe serving single-origin coffee, fresh pastries and simple lunches. We roast in small batches and bake every morning.",
+  "city": "Bristol",
+  "phone": "+44 117 000 0000",
+  "email": "hello@example.com",
+  "address": "18 Example Street, Bristol",
+  "hours": "Mon-Fri: 7:30 - 17:00\nSaturday: 8:00 - 17:00\nSunday: 9:00 - 15:00",
+  "ctaLabel": "Find us",
+  "credit": "Vishal Kumar",
+  "items": [
+    {
+      "name": "Espresso",
+      "desc": "Single origin, changes weekly",
+      "price": "GBP 3.20"
+    },
+    {
+      "name": "Flat white",
+      "desc": "Silky, consistent, made properly",
+      "price": "GBP 3.80"
+    },
+    {
+      "name": "Morning bake",
+      "desc": "Croissant, pain au chocolat, seasonal pastry",
+      "price": "GBP 3.50"
+    },
+    {
+      "name": "Lunch plate",
+      "desc": "Simple, seasonal, made in-house",
+      "price": "GBP 8.50"
+    }
+  ]
+}

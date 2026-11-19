@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Client Research &amp; Delivery Dashboard</title>
+  <meta name="description" content="Local-first dashboard for lead research, client outreach drafts, project management and proposals." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#06040c" />
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/studio.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="side-brand" href="../index.html">
+        <span class="side-mark" aria-hidden="true">V</span>
+        <span>
+          <strong>Studio</strong>
+          <small>Client operations</small>
+        </span>
+      </a>
+
+      <nav class="side-nav" aria-label="Studio sections">
+        <button class="side-link is-active" data-view="overview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="16" width="7" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="12" width="7" height="9" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          Overview
+        </button>
+        <button class="side-link" data-view="leads">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 8.5h4M18.5 6.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Leads
+          <span class="side-count" id="count-leads">0</span>
+        </button>
+        <button class="side-link" data-view="projects">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5c0-1.1.9-2 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-10Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          Projects
+          <span class="side-count" id="count-projects">0</span>
+        </button>
+        <button class="side-link" data-view="outreach">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7.5 8 5.5 8-5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          Outreach
+        </button>
+        <button class="side-link" data-view="proposals">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M9 11h6M9 14.5h6M9 18h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Proposals
+        </button>
+        <button class="side-link" data-view="builder">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 20h8M12 16v4M8 9l2 2-2 2M12.5 13H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Site builder
+        </button>
+        <button class="side-link" data-view="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Settings
+        </button>
+      </nav>
+
+      <div class="side-foot">
+        <div class="storage-meter">
+          <div class="storage-head">
+            <span>Local storage</span>
+            <span id="storage-size">0 KB</span>
+          </div>
+          <div class="storage-bar"><span id="storage-fill"></span></div>
+          <p>Data never leaves this browser. Export a backup regularly.</p>
+        </div>
+        <a class="side-back" href="../index.html">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View portfolio
+        </a>
+      </div>
+    </aside>
+
+    <div class="scrim" id="scrim"></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-title">
+          <h1 id="view-title">Overview</h1>
+          <p id="view-sub">Your pipeline at a glance.</p>
+        </div>
+        <div class="topbar-actions" id="topbar-actions"></div>
+      </header>
+
+      <div class="demo-banner" id="demo-banner" hidden>
+        <span class="demo-chip">Sample data</span>
+        <p>Demo records are loaded. They are labelled SAMPLE and never counted in the statistics above.</p>
+        <button class="btn btn-sm btn-ghost" data-action="remove-demo">Remove sample data</button>
+      </div>
+
+      <main class="view" id="view" tabindex="-1"></main>
+
+      <footer class="app-foot">
+        <span>Studio is local-first. No accounts, no servers, no tracking.</span>
+        <a href="../docs/README-STUDIO.md">How storage works</a>
+      </footer>
+    </div>
+  </div>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h2 id="modal-title">Dialog</h2>
+      <button class="icon-btn" id="modal-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
