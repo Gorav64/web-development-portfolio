@@ -8,7 +8,7 @@ Deployment is a manual decision: **do not publish without approval.**
 ## 1. Build the deployable folder
 
 ```bash
-cd modern-web-portfolio
+cd web-development-portfolio
 py tools/check_links.py
 py tools/build_public.py
 ```

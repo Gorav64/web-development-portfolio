@@ -130,7 +130,7 @@ See [outreach-guide.md](outreach-guide.md) for the full checklists.
 
 The build was completed with access limited to the project folder:
 
-- Read and write files inside `modern-web-portfolio/`.
+- Read and write files inside `web-development-portfolio/`.
 - Run a local Python HTTP server on `localhost:4173`.
 - Open the local site in a browser for testing.
 

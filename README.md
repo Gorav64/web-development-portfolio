@@ -11,7 +11,7 @@ backend. Everything runs from plain HTML, CSS and JavaScript.
 ## What is in this repository
 
 ```
-modern-web-portfolio/
+web-development-portfolio/
 ├── index.html                 Portfolio (single page)
 ├── assets/
 │   ├── css/main.css           Design system and all portfolio styles
@@ -41,7 +41,7 @@ should not be deployed publicly.
 Requires Python 3 (already available as `py` on Windows). No Node.js needed.
 
 ```bash
-cd modern-web-portfolio
+cd web-development-portfolio   # your local clone folder
 py tools/serve.py
 ```
 
