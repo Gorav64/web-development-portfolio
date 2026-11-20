@@ -8,6 +8,10 @@ desktop.ini
 # Dependencies (none required today, but keep the repo clean)
 node_modules/
 
+# Python caches from the research helpers
+__pycache__/
+*.pyc
+
 # Local secrets and environment files
 .env
 .env.*

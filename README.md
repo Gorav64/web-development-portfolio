@@ -23,9 +23,10 @@ web-development-portfolio/
 │   ├── css/studio.css
 │   └── js/                    data.js · store.js · generator.js · app.js
 ├── docs/                      Business process and reference guides
-├── leads/                     CSV templates for lead research
+├── leads/                     20 researched leads: CSV, dashboard, reports
+├── research/                  Evidence collected from public pages
 ├── clients/                   Per-client brief example
-├── tools/                     Local server, link checker, public-site builder
+├── tools/                     Local server, link checker, lead builder, public-site builder
 ├── robots.txt
 └── .gitignore
 ```
@@ -49,6 +50,7 @@ Then open:
 
 - Portfolio — <http://localhost:4173/>
 - Studio — <http://localhost:4173/studio/>
+- Lead dashboard — <http://localhost:4173/leads/dashboard.html>
 
 The server serves the repository root with no caching. Stop it with `Ctrl+C`.
 Use a different port with `py tools/serve.py 8080`.
@@ -160,6 +162,8 @@ Deployment steps for Netlify and Vercel: [docs/deployment.md](docs/deployment.md
 ## Business processes
 
 - [Client acquisition system](docs/client-acquisition.md)
+- [Lead database and dashboard](leads/README.md) — 20 researched leads, no contact made
+- [Research method and evidence](research/README.md)
 - [Lead research worksheet](docs/lead-research-worksheet.md)
 - [Outreach guide and templates](docs/outreach-guide.md)
 - [Pricing guide](docs/pricing-guide.md)

@@ -35,6 +35,9 @@ def main():
                 continue
             if EXTERNAL_RE.match(ref):
                 continue
+            if "${" in ref or "{{" in ref:
+                # Template literal filled in by page JavaScript at runtime.
+                continue
             clean = ref.split("?")[0].split("#")[0]
             if not clean:
                 continue
