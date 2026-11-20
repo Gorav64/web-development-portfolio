@@ -10,7 +10,9 @@
 | Phone | not recorded |
 | Contact person | Samantha Price |
 | Project type | Landing page + copy polish |
-| Starting estimate | USD 430 (≈ ₹36,120 at a fixed ₹84/USD research rate) |
+| Price tier | Landing page |
+| Suggested price | ₹3,000 (≈ $32) — a suggestion, not a quote |
+| Estimated effort | 3–5 working days |
 | Source | [Public website (homepage and contact form)](https://incisively.uk/) |
 | Last verified | 2026-11-20 |
 | Contact status | **Not contacted** |
@@ -33,11 +35,15 @@
 
 The consultant has a clear, differentiated offer and public pricing; better structure would help a busy owner understand the packages in under a minute.
 
-## Suggested first scope
+## Suggested scope — what is included
 
 Restructure the page into scannable service packages, a pricing table, proof/case-study slots and a short enquiry form, keeping the existing brand and copy voice.
 
-This is a starting point, not a quote. It excludes domain and hosting fees, paid plugins or fonts, stock photography, brand identity, ongoing maintenance and taxes. Confirm scope after a discovery call.
+## Price and effort
+
+₹3,000 (≈ $32 at a ₹93/USD planning rate), estimated 3–5 working days of build time, excluding waiting on content and feedback.
+
+This is a suggestion from Vishal's beginner tiers — landing page ₹3,000, small business website ₹4,000, website redesign ₹3,000–₹4,000 — not a quote. It excludes domain registration, hosting, paid plugins or fonts, stock photography, copywriting, brand identity, transaction fees, taxes and ongoing maintenance; those are quoted separately. The final price follows a requirements review and needs Vishal's explicit approval before it is sent to the business.
 
 ## Draft first email — **not sent**
 
@@ -66,6 +72,7 @@ firwall63@gmail.com
 - [ ] Confirm this is the right inbox and that the business still matches the brief.
 - [ ] Replace `[live portfolio URL — add before sending]` with a live, working portfolio or concept link. No live portfolio URL was found when this was prepared.
 - [ ] Get Vishal's explicit approval for this specific email. Do not send a batch.
+- [ ] Do not mention a price in this email. Quote only after the business replies and Vishal approves the figure.
 - [ ] Send one business at a time from Vishal's own email account. No attachments, tracking pixels or disguised links.
 - [ ] Honour an opt-out immediately and record it.
 

@@ -99,20 +99,32 @@ Always list exclusions. At minimum:
 - Logo, brand identity, photography or paid stock
 - Ongoing maintenance, retainers or emergency support
 - New features outside the listed scope
-- Taxes and payment-processing fees
+- Taxes, bank charges and payment-processing fees
 
 ---
 
 ## Investment
 
+Start from the beginner tiers:
+
+| Service | INR | Approx. USD |
+| --- | ---: | ---: |
+| Basic landing page | ₹3,000 | $32 |
+| Small business website | ₹4,000 | $43 |
+| Simple website redesign | ₹3,000–₹4,000 | $32–$43 |
+
+These are starting suggestions, not fixed prices. Show every proposal in **INR and
+USD**, using a dated conversion rate (₹93 per USD is the current planning rate). USD
+is indicative; agree the invoice currency before work starts.
+
 ```text
-| Item                                   | Amount |
-| -------------------------------------- | -----: |
-| [Project type] — [N] pages             |    $XX |
-| Additional pages ([N])                 |    $XX |
-| [Add-on]                               |    $XX |
-| Priority delivery (25%)                |    $XX |
-| Total ([currency])                     |    $XX |
+| Item                              | INR    | Approx. USD |
+| --------------------------------- | -----: | ----------: |
+| [Project type] — [N] pages        | ₹X,XXX |          $XX |
+| Additional pages ([N])            |   ₹500 |           $5 |
+| [Add-on]                          |   ₹XXX |           $XX |
+| Priority delivery (25%)           |   ₹XXX |           $XX |
+| Total                             | ₹X,XXX |          $XX |
 ```
 
 Follow with exactly what it is:
@@ -121,26 +133,26 @@ Follow with exactly what it is:
 > is confirmed after the discovery call and content review.
 
 Do not present it as a fixed price unless you are prepared to absorb all
-unknowns.
+unknowns. Nothing is sent to a client until Vishal approves the figure.
 
 ---
 
 ## Payment milestones
 
-**Projects below USD 700**
+**Projects below ₹25,000**
 
 | Milestone | Share | Amount |
 | --- | ---: | ---: |
-| Deposit — project start | 50% | $XX |
-| Final delivery | 50% | $XX |
+| Deposit — project start | 50% | ₹X / $X |
+| Final delivery | 50% | ₹X / $X |
 
-**Projects at or above USD 700**
+**Projects at or above ₹25,000**
 
 | Milestone | Share | Amount |
 | --- | ---: | ---: |
-| Deposit — project start | 40% | $XX |
-| Design & development milestone | 40% | $XX |
-| Final delivery | 20% | $XX |
+| Deposit — project start | 40% | ₹X / $X |
+| Design & development milestone | 40% | ₹X / $X |
+| Final delivery | 20% | ₹X / $X |
 
 Add:
 
@@ -171,8 +183,8 @@ Be specific about what you need and when:
 
 ```text
 Two rounds of revisions are included during design and build. Additional rounds
-are USD 60 each. Feedback is collected in one consolidated list per round. A
-change of direction after approval may be treated as a new scope.
+are ₹500 (about $5) each. Feedback is collected in one consolidated list per
+round. A change of direction after approval may be treated as a new scope.
 ```
 
 ---
@@ -207,6 +219,8 @@ Put this at the bottom of every proposal:
 > Prices are estimates, not a binding contract until both parties confirm the
 > final scope in writing. No results, rankings, traffic or revenue are
 > guaranteed. Domain, hosting and third-party costs are paid by the client.
+> USD figures are indicative at the stated conversion rate; the agreed invoice
+> currency governs payment.
 
 ---
 
@@ -218,8 +232,10 @@ Put this at the bottom of every proposal:
 - [ ] No fake testimonials, client logos or case studies.
 - [ ] No guaranteed traffic, ranking or revenue.
 - [ ] Exclusions are explicit.
+- [ ] INR and USD are both shown, with the conversion rate and date.
 - [ ] Validity date is stated.
 - [ ] A human has read it end to end before sending.
+- [ ] Vishal has approved the final figure; nothing was sent automatically.
 
 ---
 
@@ -232,7 +248,7 @@ Put this at the bottom of every proposal:
 | Pages | Page count line and extra-page price |
 | Add-ons | Scope bullets and investment rows |
 | Priority delivery | +25% line and shorter timeline |
-| Currency | All amounts converted for display |
+| Currency | Amounts displayed in the chosen currency, with INR and USD both shown |
 | Notes | Extra overview paragraph |
 | Settings → name/email/portfolio | Header and footer |
 

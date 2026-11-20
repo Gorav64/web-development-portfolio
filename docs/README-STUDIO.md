@@ -118,17 +118,18 @@ follow-up. The wording deliberately asks you to supply the specific observation
 The estimate is calculated from:
 
 ```
-base (project type)
+base (project type, INR)
 + extra pages × page price
 + selected add-ons
 + 25% if priority delivery
-= total in USD → converted for display
+= total in INR → shown in INR and USD
 ```
 
-- Prices are starting estimates, not fixed quotes.
-- Currency rates are fixed approximations in `studio/js/data.js`; update them
-  manually when they drift.
-- Milestones: 50/50 below USD 700; 40/40/20 at or above USD 700.
+- Prices are beginner starting suggestions, not fixed quotes. Nothing is sent
+  without Vishal's explicit approval.
+- Currency rates are fixed approximations in `studio/js/data.js` (₹93/USD as of
+  2026-11-20); update them manually when they drift.
+- Milestones: 50/50 below ₹25,000; 40/40/20 at or above ₹25,000.
 - Revision policy: two rounds included; additional rounds at the configured
   price.
 - **Print / Save as PDF** prints only the proposal paper.

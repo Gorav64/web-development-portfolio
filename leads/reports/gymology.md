@@ -10,7 +10,9 @@
 | Phone | +1 417 812 6611 |
 | Contact person | not identified |
 | Project type | Gym / fitness website |
-| Starting estimate | USD 770 (≈ ₹64,680 at a fixed ₹84/USD research rate) |
+| Price tier | Small business website |
+| Suggested price | ₹4,000 (≈ $43) — a suggestion, not a quote |
+| Estimated effort | 5–7 working days |
 | Source | [Public website (homepage and contact page)](https://gymology247.com/) |
 | Last verified | 2026-11-20 |
 | Contact status | **Not contacted** |
@@ -32,11 +34,15 @@
 
 Remove a visible placeholder that undermines trust, and turn the site into a clear path from 'two gyms' to 'book a tour or buy a pass'.
 
-## Suggested first scope
+## Suggested scope — what is included
 
 Rebuild as a fast, mobile-first gym site with a two-location comparison, clear rates, day-pass and tour request forms, class information and local SEO.
 
-This is a starting point, not a quote. It excludes domain and hosting fees, paid plugins or fonts, stock photography, brand identity, ongoing maintenance and taxes. Confirm scope after a discovery call.
+## Price and effort
+
+₹4,000 (≈ $43 at a ₹93/USD planning rate), estimated 5–7 working days of build time, excluding waiting on content and feedback.
+
+This is a suggestion from Vishal's beginner tiers — landing page ₹3,000, small business website ₹4,000, website redesign ₹3,000–₹4,000 — not a quote. It excludes domain registration, hosting, paid plugins or fonts, stock photography, copywriting, brand identity, transaction fees, taxes and ongoing maintenance; those are quoted separately. The final price follows a requirements review and needs Vishal's explicit approval before it is sent to the business.
 
 ## Draft first email — **not sent**
 
@@ -65,6 +71,7 @@ firwall63@gmail.com
 - [ ] Confirm this is the right inbox and that the business still matches the brief.
 - [ ] Replace `[live portfolio URL — add before sending]` with a live, working portfolio or concept link. No live portfolio URL was found when this was prepared.
 - [ ] Get Vishal's explicit approval for this specific email. Do not send a batch.
+- [ ] Do not mention a price in this email. Quote only after the business replies and Vishal approves the figure.
 - [ ] Add a valid physical postal address to the signature. US CAN-SPAM and Canada's CASL generally require one in commercial email.
 - [ ] Send one business at a time from Vishal's own email account. No attachments, tracking pixels or disguised links.
 - [ ] Honour an opt-out immediately and record it.

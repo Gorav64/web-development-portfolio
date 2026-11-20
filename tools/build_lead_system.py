@@ -44,7 +44,10 @@ REQUIRED = [
     "score",
     "status",
     "project_type",
-    "estimate_usd",
+    "price_tier",
+    "price_inr_low",
+    "price_inr_high",
+    "effort",
     "source_url",
     "source_label",
     "verified",
@@ -61,6 +64,12 @@ REQUIRED = [
     "mobile_experience",
 ]
 BANDS = {"HOT": 70, "WARM": 45, "LOW": 0}
+RATE_INR_PER_USD = 93
+PRICE_TIERS = {
+    "Landing page": (3000, 3000, "3–5 working days"),
+    "Small business website": (4000, 4000, "5–7 working days"),
+    "Website redesign": (3000, 4000, "4–6 working days"),
+}
 FIELDS = [
     "Business name",
     "Country",
@@ -84,7 +93,10 @@ FIELDS = [
     "Follow-up date",
     "Client response",
     "Project type",
-    "Estimated value (USD)",
+    "Price tier",
+    "Suggested price (INR)",
+    "Suggested price (USD approx.)",
+    "Estimated effort",
     "Last verified",
     "Notes",
 ]
@@ -139,10 +151,28 @@ def validate(rows: list[dict]) -> None:
         for key in ("date_contacted", "follow_up", "verified"):
             if row[key] and not re.match(r"^\d{4}-\d{2}-\d{2}$", row[key]):
                 fail(f"{row['slug']}: {key} must be YYYY-MM-DD")
+        tier = row["price_tier"]
+        if tier not in PRICE_TIERS:
+            fail(f"{row['slug']}: unknown price tier {tier!r}")
+        expected_low, expected_high, expected_effort = PRICE_TIERS[tier]
+        if (row["price_inr_low"], row["price_inr_high"]) != (expected_low, expected_high):
+            fail(f"{row['slug']}: {tier} must be priced at ₹{expected_low}-₹{expected_high}")
+        if row["effort"] != expected_effort:
+            fail(f"{row['slug']}: {tier} effort must be {expected_effort!r}")
 
 
-def inr(usd: int) -> int:
-    return round(usd * 84)
+def usd(inr_value: int) -> int:
+    return round(inr_value / RATE_INR_PER_USD)
+
+
+def price_inr_text(row: dict) -> str:
+    low, high = row["price_inr_low"], row["price_inr_high"]
+    return f"₹{money(low)}" if low == high else f"₹{money(low)}–₹{money(high)}"
+
+
+def price_usd_text(row: dict) -> str:
+    low, high = usd(row["price_inr_low"]), usd(row["price_inr_high"])
+    return f"${money(low)}" if low == high else f"${money(low)}–${money(high)}"
 
 
 def money(value: int) -> str:
@@ -199,7 +229,10 @@ def write_csv(rows: list[dict]) -> None:
                     "Follow-up date": row["follow_up"],
                     "Client response": row["response"],
                     "Project type": row["project_type"],
-                    "Estimated value (USD)": row["estimate_usd"],
+                    "Price tier": row["price_tier"],
+                    "Suggested price (INR)": price_inr_text(row),
+                    "Suggested price (USD approx.)": price_usd_text(row),
+                    "Estimated effort": row["effort"],
                     "Last verified": row["verified"],
                     "Notes": row["notes"],
                 }
@@ -220,12 +253,13 @@ def report_markdown(row: dict) -> str:
         "Confirm this is the right inbox and that the business still matches the brief.",
         "Replace `[live portfolio URL — add before sending]` with a live, working portfolio or concept link. No live portfolio URL was found when this was prepared.",
         "Get Vishal's explicit approval for this specific email. Do not send a batch.",
+        "Do not mention a price in this email. Quote only after the business replies and Vishal approves the figure.",
         "Send one business at a time from Vishal's own email account. No attachments, tracking pixels or disguised links.",
         "Honour an opt-out immediately and record it.",
     ]
     if row["country"] in ("United States", "Canada"):
         before.insert(
-            3,
+            4,
             "Add a valid physical postal address to the signature. US CAN-SPAM and Canada's CASL generally require one in commercial email.",
         )
     before_text = "\n".join(f"- [ ] {item}" for item in before)
@@ -241,7 +275,9 @@ def report_markdown(row: dict) -> str:
 | Phone | {row['phone'] or 'not recorded'} |
 | Contact person | {row['contact_person'] or 'not identified'} |
 | Project type | {row['project_type']} |
-| Starting estimate | USD {money(row['estimate_usd'])} (≈ ₹{money(inr(row['estimate_usd']))} at a fixed ₹84/USD research rate) |
+| Price tier | {row['price_tier']} |
+| Suggested price | {price_inr_text(row)} (≈ {price_usd_text(row)}) — a suggestion, not a quote |
+| Estimated effort | {row['effort']} |
 | Source | [{row['source_label']}]({row['source_url']}) |
 | Last verified | {row['verified']} |
 | Contact status | **Not contacted** |
@@ -258,11 +294,15 @@ def report_markdown(row: dict) -> str:
 
 {row['opportunity']}
 
-## Suggested first scope
+## Suggested scope — what is included
 
 {row['solution']}
 
-This is a starting point, not a quote. It excludes domain and hosting fees, paid plugins or fonts, stock photography, brand identity, ongoing maintenance and taxes. Confirm scope after a discovery call.
+## Price and effort
+
+{price_inr_text(row)} (≈ {price_usd_text(row)} at a ₹93/USD planning rate), estimated {row['effort']} of build time, excluding waiting on content and feedback.
+
+This is a suggestion from Vishal's beginner tiers — landing page ₹3,000, small business website ₹4,000, website redesign ₹3,000–₹4,000 — not a quote. It excludes domain registration, hosting, paid plugins or fonts, stock photography, copywriting, brand identity, transaction fees, taxes and ongoing maintenance; those are quoted separately. The final price follows a requirements review and needs Vishal's explicit approval before it is sent to the business.
 
 ## Draft first email — **not sent**
 
@@ -289,17 +329,19 @@ def write_reports(rows: list[dict]) -> None:
     for row in rows:
         (REPORTS / f"{row['slug']}.md").write_text(report_markdown(row), encoding="utf-8")
     table = "\n".join(
-        f"| {row['priority']} | [{row['name']}]({row['slug']}.md) | {row['city']}, {row['country']} | {row['category']} | ${money(row['estimate_usd'])} | {('unavailable' if row['email'] == 'unavailable' else 'yes')} |"
+        f"| {row['priority']} | [{row['name']}]({row['slug']}.md) | {row['city']}, {row['country']} | {row['category']} | {price_inr_text(row)} | {row['effort']} | {('unavailable' if row['email'] == 'unavailable' else 'yes')} |"
         for row in rows
     )
+    low = sum(row["price_inr_low"] for row in rows)
+    high = sum(row["price_inr_high"] for row in rows)
     index = f"""# Opportunity reports
 
 Twenty short, business-specific reports. Each one records only what was visible
-on public pages, plus a suggested scope and a draft first email. Nothing here
-has been sent.
+on public pages, plus a suggested scope, a suggested price and a draft first
+email. Nothing here has been sent, and no price has been quoted to anyone.
 
-| Priority | Business | Market | Category | Starting estimate | Public email |
-| --- | --- | --- | --- | ---: | --- |
+| Priority | Business | Market | Category | Suggested price (INR) | Effort | Public email |
+| --- | --- | --- | --- | ---: | --- | --- |
 {table}
 
 ## How to read these
@@ -309,16 +351,21 @@ has been sent.
 - **WARM** means a real improvement opportunity, but the current site works.
 - **LOW** means the site is already polished; the opportunity is incremental.
 - The score is a relative prioritisation score, not a probability of purchase.
-- Estimates are scope-based starting points in USD, not quotes or forecasts.
+- Prices follow Vishal's beginner tiers: landing page ₹3,000, small business
+  website ₹4,000, redesign ₹3,000–₹4,000. They are suggestions for approval,
+  not quotes. USD figures in each report use a ₹93/USD planning rate.
+- All 20 together total ₹{money(low)}–₹{money(high)} only if every one converted
+  — arithmetic, not a forecast. Hosting, domain, extras, fees and taxes are not
+  included.
 - Mobile notes are based on the viewport meta tag and responsive breakpoints in
   the checked stylesheets. Only Inside Cafe was visually checked in a narrow
   browser window. No site was pixel-tested at 390 px.
 
 ## The rule
 
-No email is sent by any script. Vishal reviews each draft and sends from his
-own account, one business at a time, after explicit approval. See
-[../README.md](../README.md) for the workflow.
+No email is sent by any script. No price is quoted without Vishal's explicit
+approval. Vishal reviews each draft and sends from his own account, one business
+at a time. See [../README.md](../README.md) for the workflow.
 """
     (REPORTS / "README.md").write_text(index, encoding="utf-8")
 
@@ -329,20 +376,28 @@ def dashboard_data(rows: list[dict]) -> dict:
         item = {key: row[key] for key in (
             "slug", "name", "country", "city", "category", "website", "email",
             "phone", "contact_person", "priority", "score", "status",
-            "project_type", "estimate_usd", "source_url", "source_label",
-            "verified", "site_quality", "mobile_experience", "issues",
-            "solution", "opportunity", "evidence", "notes",
+            "project_type", "price_tier", "price_inr_low", "price_inr_high",
+            "effort", "source_url", "source_label", "verified", "site_quality",
+            "mobile_experience", "issues", "solution", "opportunity", "evidence",
+            "notes",
         )}
-        item["inr"] = inr(row["estimate_usd"])
+        item["usd_low"] = usd(row["price_inr_low"])
+        item["usd_high"] = usd(row["price_inr_high"])
         item["draft_subject"] = row["draft_subject"]
         item["draft_body"] = draft(row)
         leads.append(item)
+    low = sum(row["price_inr_low"] for row in rows)
+    high = sum(row["price_inr_high"] for row in rows)
     return {
         "generated": max(row["verified"] for row in rows),
         "total": len(rows),
         "goal_low": 70000,
         "goal_high": 80000,
-        "rate_inr": 84,
+        "rate_inr": RATE_INR_PER_USD,
+        "pipeline_low": low,
+        "pipeline_high": high,
+        "pipeline_usd_low": usd(low),
+        "pipeline_usd_high": usd(high),
         "leads": leads,
     }
 
@@ -475,10 +530,10 @@ HTML = r"""<!doctype html>
       <p class="lede">A working pipeline across the US, UK, Canada, Australia and New Zealand. Every row is based on a public website or public business page. Gaps are marked, not filled in.</p>
     </div>
     <aside class="goal">
-      <p class="eyebrow">Target</p>
+      <p class="eyebrow">Savings target</p>
       <div class="goal-num">₹70k–₹80k</div>
-      <p>One larger project or two smaller ones at these starting estimates, before fees and taxes.</p>
-      <p class="tiny">Not a forecast. Estimates are scope-based starting points, not quotes.</p>
+      <p>A laptop fund, not a per-site price. At ₹3,000–₹4,000 per project, reaching it takes roughly 18–27 paid projects before fees and taxes.</p>
+      <p class="tiny">If all 20 leads converted, their suggested prices total <strong id="pipelineValue">₹75,000–₹78,000</strong> (≈ <span id="pipelineUsd">$806–$839</span>). That is arithmetic, not a forecast.</p>
     </aside>
   </section>
 
@@ -522,12 +577,12 @@ HTML = r"""<!doctype html>
   </section>
 
   <div class="count" id="count" aria-live="polite"></div>
-  <p class="tablehint">Swipe the table sideways on a phone to see email, estimate and the Brief button.</p>
+  <p class="tablehint">Swipe the table sideways on a phone to see email, price and the Brief button.</p>
 
   <section class="tablewrap" aria-label="Lead table">
     <table>
       <thead>
-        <tr><th>Priority</th><th>Business</th><th>Market</th><th>Industry</th><th>Public email</th><th>Starting est.</th><th>Status</th><th></th></tr>
+        <tr><th>Priority</th><th>Business</th><th>Market</th><th>Industry</th><th>Public email</th><th>Suggested price</th><th>Status</th><th></th></tr>
       </thead>
       <tbody id="rows"></tbody>
     </table>
@@ -536,6 +591,7 @@ HTML = r"""<!doctype html>
 
   <footer class="foot">
     <p><strong>What this dashboard does:</strong> it filters and displays the real records in <a href="leads.csv">leads.csv</a>. Statistics are computed from those records; nothing is estimated or padded. All 20 leads are marked <strong>not contacted</strong>.</p>
+    <p><strong>Prices:</strong> the three beginner tiers are ₹3,000 for a landing page, ₹4,000 for a small business website and ₹3,000–₹4,000 for a redesign. Every figure here is a suggestion from those tiers, not a quote, and none has been sent to a business. USD amounts use a ₹93/USD planning rate. Hosting, domain, extras, fees and taxes are excluded.</p>
     <p><strong>Limits:</strong> no site was pixel-tested at 390 px. Mobile notes come from the viewport meta tag and responsive breakpoints in the checked stylesheets; Inside Cafe was also checked in a narrow browser window. No performance, security or ranking claim is made.</p>
     <p><strong>Privacy:</strong> this file makes no network requests and sets no cookies. Opening a source link leaves this page. Business details are from public pages accessed on <span id="genDate2"></span>. Do not publish this pipeline.</p>
   </footer>
@@ -555,8 +611,10 @@ const state = { q: "", priority: "", country: "", category: "", email: "", statu
 const $ = (id) => document.getElementById(id);
 
 function fmt(n){ return new Intl.NumberFormat("en-US").format(n); }
-function money(n){ return "$" + fmt(n); }
+function usdMoney(n){ return "$" + fmt(n); }
 function inr(n){ return "₹" + fmt(n); }
+function priceInr(l){ return l.price_inr_low === l.price_inr_high ? inr(l.price_inr_low) : inr(l.price_inr_low) + "–" + inr(l.price_inr_high); }
+function priceUsd(l){ const a = usdMoney(l.usd_low), b = usdMoney(l.usd_high); return l.usd_low === l.usd_high ? a : a + "–" + b; }
 function badge(p){ return `<span class="badge ${p}">${p}</span>`; }
 function emailLabel(l){ return l.email === "unavailable" ? '<span class="muted">unavailable</span>' : `<span class="mail">${escapeHtml(l.email)}</span>`; }
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -572,6 +630,13 @@ function init(){
   $("statLow").textContent = LEADS.filter(l => l.priority === "LOW").length;
   $("statEmail").textContent = LEADS.filter(l => l.email !== "unavailable").length;
   $("statContacted").textContent = LEADS.filter(l => l.status !== "not_contacted").length;
+
+  $("pipelineValue").textContent = DATA.pipeline_low === DATA.pipeline_high
+    ? inr(DATA.pipeline_low)
+    : inr(DATA.pipeline_low) + "–" + inr(DATA.pipeline_high);
+  $("pipelineUsd").textContent = DATA.pipeline_usd_low === DATA.pipeline_usd_high
+    ? usdMoney(DATA.pipeline_usd_low)
+    : usdMoney(DATA.pipeline_usd_low) + "–" + usdMoney(DATA.pipeline_usd_high);
 
   fillSelect("country", [...new Set(LEADS.map(l => l.country))].sort());
   fillSelect("category", [...new Set(LEADS.map(l => l.category))].sort());
@@ -617,7 +682,7 @@ function filtered(){
     if (state.email === "no" && l.email !== "unavailable") return false;
     if (state.status && l.status !== state.status) return false;
     if (state.q) {
-      const hay = [l.name,l.city,l.country,l.category,l.email,l.site_quality,...l.issues,l.opportunity].join(" ").toLowerCase();
+      const hay = [l.name,l.city,l.country,l.category,l.email,l.site_quality,l.price_tier,l.effort,...l.issues,l.opportunity].join(" ").toLowerCase();
       if (!hay.includes(state.q)) return false;
     }
     return true;
@@ -636,7 +701,7 @@ function render(){
       <td>${escapeHtml(l.city)}<div class="sub">${escapeHtml(l.country)}</div></td>
       <td>${escapeHtml(l.category)}</td>
       <td>${emailLabel(l)}</td>
-      <td class="est">${money(l.estimate_usd)}<small>≈ ${inr(l.inr)}</small></td>
+      <td class="est">${priceInr(l)}<small>≈ ${priceUsd(l)}</small></td>
       <td><span class="muted">Not contacted</span></td>
       <td><button class="open" data-i="${idx}">Brief</button></td>
     </tr>`;
@@ -654,11 +719,14 @@ function openDrawer(i){
     <h2 id="drawerTitle">${escapeHtml(l.name)}</h2>
     <p class="muted">${escapeHtml(l.city)}, ${escapeHtml(l.country)} · ${escapeHtml(l.category)} · score ${l.score}/100</p>
     <div class="kv">
-      <div><div class="k">Starting estimate</div><div class="v"><strong>${money(l.estimate_usd)}</strong> · ≈ ${inr(l.inr)}</div></div>
+      <div><div class="k">Suggested price</div><div class="v"><strong>${priceInr(l)}</strong> · ≈ ${priceUsd(l)}</div></div>
+      <div><div class="k">Estimated effort</div><div class="v">${escapeHtml(l.effort)}</div></div>
+      <div><div class="k">Price tier</div><div class="v">${escapeHtml(l.price_tier)}</div></div>
       <div><div class="k">Project type</div><div class="v">${escapeHtml(l.project_type)}</div></div>
       <div><div class="k">Website</div><div class="v">${l.website ? `<a href="${escapeHtml(l.website)}" target="_blank" rel="noopener">${escapeHtml(l.website.replace(/^https?:\/\//,""))}</a>` : "None found"}</div></div>
       <div><div class="k">Contact status</div><div class="v">Not contacted</div></div>
     </div>
+    <p class="note">Tier price only. Hosting, domain, extras, transaction fees and taxes are excluded. No quote has been sent or approved.</p>
     ${emailBlock}
     <h3>What I observed</h3>
     <ul>${l.issues.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
@@ -734,11 +802,12 @@ def main() -> None:
     write_csv(rows)
     write_reports(rows)
     write_dashboard(rows)
-    total = sum(row["estimate_usd"] for row in rows)
+    low = sum(row["price_inr_low"] for row in rows)
+    high = sum(row["price_inr_high"] for row in rows)
     print(f"Validated {len(rows)} leads.")
     print(f"HOT {sum(1 for r in rows if r['priority']=='HOT')} | WARM {sum(1 for r in rows if r['priority']=='WARM')} | LOW {sum(1 for r in rows if r['priority']=='LOW')}")
     print(f"Public emails: {sum(1 for r in rows if r['email'] != 'unavailable')}/{len(rows)}")
-    print(f"Starting pipeline: USD {total:,} (approx INR {total*84:,} at fixed 84/USD)")
+    print(f"Suggested pipeline: INR {low:,}-{high:,} (approx USD {usd(low):,}-{usd(high):,} at {RATE_INR_PER_USD}/USD). If all 20 converted; not a forecast.")
     print(f"Wrote {CSV_OUT.relative_to(ROOT)}")
     print(f"Wrote {REPORTS.relative_to(ROOT)}/ ({len(rows)} reports + index)")
     print(f"Wrote {DASHBOARD.relative_to(ROOT)}")

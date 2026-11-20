@@ -42,7 +42,7 @@
     return `${c.symbol}${Number(amount || 0).toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
   };
 
-  const convert = (usd, code = 'USD') => Math.round(Number(usd || 0) * currency(code).rate);
+  const convert = (inr, code = 'INR') => Math.round(Number(inr || 0) * currency(code).rate);
 
   const option = (value, label, selected) =>
     `<option value="${esc(value)}"${value === selected ? ' selected' : ''}>${esc(label)}</option>`;
@@ -835,9 +835,9 @@
     const base = type.base;
     const subtotal = base + pageCost + featureCost;
     const rushFee = input.rush ? Math.round(subtotal * D.PRICING.rushFee) : 0;
-    const totalUsd = subtotal + rushFee;
+    const totalInr = subtotal + rushFee;
     const days = input.rush ? Math.ceil((type.days + extraPages * 2) * 0.7) : type.days + extraPages * 2;
-    const milestones = totalUsd >= 700 ? [40, 40, 20] : [50, 50];
+    const milestones = totalInr >= 25000 ? [40, 40, 20] : [50, 50];
 
     return {
       type,
@@ -849,8 +849,9 @@
       base,
       subtotal,
       rushFee,
-      totalUsd,
-      total: convert(totalUsd, input.currency),
+      totalInr,
+      totalUsd: convert(totalInr, 'USD'),
+      total: convert(totalInr, input.currency),
       currency: input.currency,
       days,
       milestones,
@@ -865,7 +866,7 @@
 
   function proposalPaper(result) {
     const c = currency(result.currency);
-    const money = (usd) => `${c.symbol}${convert(usd, result.currency).toLocaleString('en-US')}`;
+    const money = (inr) => `${c.symbol}${convert(inr, result.currency).toLocaleString('en-US')}`;
     const owner = S.settings;
     const lineItems = [
       [`${result.type.label} — ${result.pages} page${result.pages > 1 ? 's' : ''}`, result.base],
@@ -917,9 +918,11 @@
         <h3>Not included</h3>
         <ul>
           <li>Domain registration, hosting fees and third-party paid services</li>
+          <li>Paid plugins, fonts, stock photography or booking subscriptions</li>
           <li>Content writing beyond light polishing of supplied copy</li>
           <li>Ongoing maintenance, unless agreed separately</li>
           <li>New brand identity, logo design or photography</li>
+          <li>Taxes, bank charges and payment-processing fees</li>
         </ul>
 
         <h3>Investment <span class="est-badge">Estimate</span></h3>
@@ -930,7 +933,7 @@
             <tr class="total-row"><td>Total (${esc(result.currency)})</td><td style="text-align:right">${c.symbol}${result.total.toLocaleString('en-US')}</td></tr>
           </tbody>
         </table>
-        <p style="font-size:.8rem;color:#6b6186">This is an estimate based on the information available today. The final quote is confirmed after the discovery call and content review.</p>
+        <p style="font-size:.8rem;color:#6b6186">Base price in INR: <strong>${fmtMoney(result.totalInr, 'INR')}</strong> · approximate USD: <strong>${fmtMoney(result.totalUsd, 'USD')}</strong> at ₹${D.PRICING.planningRate}/USD. Domain, hosting, paid assets, transaction fees and taxes are extra. USD is indicative; the agreed invoice currency governs payment. This is an estimate confirmed after the discovery call and content review.</p>
 
         <h3>Payment milestones</h3>
         <table>
@@ -938,7 +941,7 @@
           <tbody>
             ${result.milestones.map((share, index) => `
               <tr>
-                <td>${index === 0 ? 'Deposit — project start' : index === 1 ? 'Design & development milestone' : 'Final delivery'}</td>
+                <td>${index === 0 ? 'Deposit — project start' : index === 1 && result.milestones.length === 3 ? 'Design & development milestone' : 'Final delivery'}</td>
                 <td style="text-align:right">${share}%</td>
                 <td style="text-align:right">${c.symbol}${Math.round((result.total * share) / 100).toLocaleString('en-US')}</td>
               </tr>`).join('')}
@@ -949,7 +952,7 @@
         <p>Estimated ${result.days} calendar days from the date content and access are provided${result.rush ? ', with priority scheduling' : ''}. Delays in feedback or content will shift the delivery date accordingly.</p>
 
         <h3>Revisions</h3>
-        <p>${result.revisions} rounds of revisions are included during design and build. Additional rounds are ${fmtMoney(D.PRICING.extraRevisionPrice, result.currency)} each. Revision requests are collected in one consolidated list per round.</p>
+        <p>${result.revisions} rounds of revisions are included during design and build. Additional rounds are ${fmtMoney(convert(D.PRICING.extraRevisionPrice, result.currency), result.currency)} each. Revision requests are collected in one consolidated list per round.</p>
 
         <h3>Next steps</h3>
         <ol>
@@ -978,7 +981,7 @@
         <div class="proposal-layout">
           <section class="panel proposal-form-panel">
             <div class="panel-head">
-              <div><h2>Proposal builder</h2><p>Prices are starting estimates in USD, converted for display.</p></div>
+              <div><h2>Proposal builder</h2><p>Beginner prices in INR, shown with an approximate USD figure. Draft only — get Vishal's explicit approval before sending any quote.</p></div>
             </div>
             <form data-form="proposal" class="form-grid">
               <div class="field full">
@@ -1012,7 +1015,7 @@
                   ${D.FEATURES.map((feature) => `
                     <label class="chip-choice">
                       <input type="checkbox" name="features" value="${feature.id}" ${p.features.includes(feature.id) ? 'checked' : ''} />
-                      <span>${esc(feature.label)} · ${fmtMoney(feature.price, 'USD')}</span>
+                      <span>${esc(feature.label)} · ${fmtMoney(feature.price, 'INR')} (≈ ${fmtMoney(convert(feature.price, 'USD'), 'USD')})</span>
                     </label>`).join('')}
                 </div>
               </div>

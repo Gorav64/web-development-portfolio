@@ -10,7 +10,9 @@
 | Phone | +1 250 899 0981 |
 | Contact person | not identified |
 | Project type | Landing page |
-| Starting estimate | USD 370 (≈ ₹31,080 at a fixed ₹84/USD research rate) |
+| Price tier | Landing page |
+| Suggested price | ₹3,000 (≈ $32) — a suggestion, not a quote |
+| Estimated effort | 3–5 working days |
 | Source | [Public website (homepage)](https://okanaganyardworks.ca/) |
 | Last verified | 2026-11-20 |
 | Contact status | **Not contacted** |
@@ -32,11 +34,15 @@
 
 The company already has strong content and photos; targeted landing pages could turn more of that traffic into quote requests.
 
-## Suggested first scope
+## Suggested scope — what is included
 
 Short service-specific landing pages and a single quote form, with a shorter homepage that routes visitors to the right service.
 
-This is a starting point, not a quote. It excludes domain and hosting fees, paid plugins or fonts, stock photography, brand identity, ongoing maintenance and taxes. Confirm scope after a discovery call.
+## Price and effort
+
+₹3,000 (≈ $32 at a ₹93/USD planning rate), estimated 3–5 working days of build time, excluding waiting on content and feedback.
+
+This is a suggestion from Vishal's beginner tiers — landing page ₹3,000, small business website ₹4,000, website redesign ₹3,000–₹4,000 — not a quote. It excludes domain registration, hosting, paid plugins or fonts, stock photography, copywriting, brand identity, transaction fees, taxes and ongoing maintenance; those are quoted separately. The final price follows a requirements review and needs Vishal's explicit approval before it is sent to the business.
 
 ## Draft first email — **not sent**
 
@@ -65,6 +71,7 @@ firwall63@gmail.com
 - [ ] Confirm this is the right inbox and that the business still matches the brief.
 - [ ] Replace `[live portfolio URL — add before sending]` with a live, working portfolio or concept link. No live portfolio URL was found when this was prepared.
 - [ ] Get Vishal's explicit approval for this specific email. Do not send a batch.
+- [ ] Do not mention a price in this email. Quote only after the business replies and Vishal approves the figure.
 - [ ] Add a valid physical postal address to the signature. US CAN-SPAM and Canada's CASL generally require one in commercial email.
 - [ ] Send one business at a time from Vishal's own email account. No attachments, tracking pixels or disguised links.
 - [ ] Honour an opt-out immediately and record it.
